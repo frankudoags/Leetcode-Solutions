@@ -4,21 +4,19 @@
  */
 var isValid = function(s) {
     if(s.length % 2 !== 0 ) return false;
-    let str = s.trim().split('');
-    let temp = [];
-    for(let i of str) {
-        if( i === '(' || i === '{' || i === '[' ) {
-            temp.push(i);
+     s = s.trim().split('');
+     const couple = {
+        '[': ']',
+        '{': '}',
+        '(': ')'
+      }
+      const stack = [];
+      for (let i = 0; i < s.length; i++) {
+        if (couple[s[i]]) {
+          stack.push(s[i]);
+        } else if (couple[stack.pop()] !== s[i]) {
+          return false;
         }
-        if( i === ')') {
-            if(temp.pop() !== '(') return false;
-        }
-        if( i === '}') {
-            if(temp.pop() !== '{') return false;
-        }
-        if( i === ']') {
-            if(temp.pop() !== '[') return false;
-        }
-    }
-    return !temp.length
+      }
+      return !stack.length;    
 };
