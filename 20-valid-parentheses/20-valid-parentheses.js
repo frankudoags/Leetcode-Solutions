@@ -3,18 +3,22 @@
  * @return {boolean}
  */
 var isValid = function(s) {
-    const couple = {
-    '[': ']',
-    '{': '}',
-    '(': ')'
-  }
-    const stack = [];
-  for (let i = 0; i < s.length; i++) {
-    if (couple[s[i]]) {
-      stack.push(s[i]);
-    } else if (couple[stack.pop()] !== s[i]) {
-      return false;
+    if(s.length % 2 !== 0 ) return false;
+    let str = s.trim().split('');
+    let temp = [];
+    for(let i of str) {
+        if( i === '(' || i === '{' || i === '[' ) {
+            temp.push(i);
+        }
+        if( i === ')') {
+            if(temp.pop() !== '(') return false;
+        }
+        if( i === '}') {
+            if(temp.pop() !== '{') return false;
+        }
+        if( i === ']') {
+            if(temp.pop() !== '[') return false;
+        }
     }
-  }
-  return !stack.length;
+    return !temp.length
 };
