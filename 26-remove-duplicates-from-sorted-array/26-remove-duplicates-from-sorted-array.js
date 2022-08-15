@@ -8,7 +8,6 @@ const removeDuplicates = function(nums) {
     if (nums[i] > nums[pointer]) {
       pointer++;
       nums[pointer] = nums[i];
-      console.log(i, nums)
     }
   }
   nums.length = pointer + 1;
