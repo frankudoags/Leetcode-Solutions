@@ -12,14 +12,5 @@ var isHappy = function(n) {
 }
 
 function sumOfSquares(n) {
-    let output = 0;
-
-    while (n) {
-        let digit = n % 10;
-        digit = digit ** 2;
-        output += digit;
-        n = Math.floor(n / 10);
-    }
-
-    return output;
+    return n.toString().split('').reduce((acc, cur) => +acc + ((+cur)**2), 0);
 }
