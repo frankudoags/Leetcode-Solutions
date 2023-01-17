@@ -15,6 +15,7 @@ class Solution:
             ans += chr(self.find(ord(baseStr[i]) - 97) + 97)
         return ans
     
+    
     def find(self, word):
         if self.parent[word] == word:
             return word
