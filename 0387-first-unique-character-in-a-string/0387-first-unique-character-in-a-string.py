@@ -11,4 +11,4 @@ class Solution:
             if hash_map[s[i]] == 1:
                 return i
         
-        return -1
+        return -1 
