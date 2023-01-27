@@ -13,9 +13,9 @@
 var rotateRight = function(head, k) {
     if(!head ||!head.next || !k) return head;
     const length = getLen(head);
-    console.log(length)
+    //we mod the length to ensure we skip all the repetitive rotations
     let times = k % length;
-    
+    //rotate for the remaining times that are not repeated
     while(times > 0){
         let head_ptr = rotate(head);
         head = head_ptr
