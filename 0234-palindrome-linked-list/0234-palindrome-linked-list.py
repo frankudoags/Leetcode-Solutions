@@ -10,9 +10,6 @@ class Solution:
         while head:
             astr += str(head.val)
             head = head.next
-        print(astr)
         x = astr[::-1]
-        print(x)
-        
         return x == astr
         
