@@ -14,7 +14,7 @@ class Solution:
         
         return nums[l]
 
-#approach
+
 '''
 Let's look at an example array [3,3,4,4,5,6,6,7,7].
 We look at indicies             0,  2,  4,  6,  8 
