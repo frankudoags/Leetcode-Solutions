@@ -13,10 +13,10 @@ function isAnagram(s: string, t: string): boolean {
     }
     let ans = true;
     for(const [key, val] of Object.entries(map)){
-    if(val !== 0){
-        ans = false;
-        break;
-    }
+        if(val !== 0){
+            ans = false;
+            break;
+        }
     }
     return ans;
 };
