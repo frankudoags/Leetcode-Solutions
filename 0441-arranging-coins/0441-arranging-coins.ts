@@ -1,15 +1,14 @@
-class Solution:
-    def arrangeCoins(self, n: int) -> int:
-        count = 1
-        rows = 0
-        
-        while n > 0:
-            if(n - count >= 0):
-                n -= count
-                count += 1
-                rows += 1
-            else:
-                break
-        
-        return rows
-        
+function arrangeCoins(n: number): number {
+    if(n < 0) return;
+    return Math.floor(Math.sqrt(2*n + 0.25) - 0.5)
+};
+
+/**
+ * Math: Using Sum of Integers Formula
+ *
+ * This problem can be reduced down to:
+ *      (K * (K+1))/2 <= N
+ *      Simplifying, we get: k <= sqrt(2n + 1/4) - 1/2
+ * Since we want the row that has full levels, we just need to return the floor of
+ * above result
+ */
