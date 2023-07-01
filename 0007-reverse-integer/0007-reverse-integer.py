@@ -1,15 +1,21 @@
 class Solution:
     def reverse(self, x: int) -> int:
+        poof = True if x > 0 else False
+        x = abs(x)
         rev = 0
-        sign = 1 if x >=0 else -1
-        x = x*sign
-        while x > 0:
-            rev = rev * 10 + x % 10
-            x = x//10
         
-        rev = rev*sign
-        if rev > -(2**31) and rev <=(2**31 - 1):
-            return rev
+        while x > 0: 
+            rev = (rev * 10) + (x % 10)
+            x = x // 10
+            
+            
+        if poof: 
+            if(rev > ( ( 2**31 ) -1 ) ):
+                return 0
         else:
-            return 0
+            if(rev > ( 2**31  ) ):
+                return 0
+        
+        return rev if poof else -1 * rev
+        
         
