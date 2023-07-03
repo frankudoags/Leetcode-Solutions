@@ -16,9 +16,6 @@
 // }
 impl Solution {
     pub fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
-        // if head.is_none() || head.as_mut().unwrap().next.is_none() {
-        //     return head;
-        // } else {
             let mut rev = None;
             let mut curr = head;
             
@@ -29,7 +26,6 @@ impl Solution {
                 curr = next;
             }
             rev
-        // }
         
     }
 }
