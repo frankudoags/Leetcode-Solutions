@@ -4,22 +4,26 @@ impl Solution {
         //a hashmap that stores the frequency of each element
         let mut f_map: HashMap<i32,i32> = HashMap::new();
         
+        //iterate through the nums array
+        for elem in nums.iter() {
+            //insert 1 if element not found, else update it's count
+            f_map.entry(*elem).and_modify(|counter| *counter += 1).or_insert(1);
+        }
+
+        //calculate n/3
+        let check: i32 = (nums.len() / 3) as i32;
+        
         //answer array
         let mut ans: Vec<i32> = vec![];
         
-        //calculate n/3
-        let check = (nums.len() / 3) as i32;
-        
-        //iterate through the nums array, increment hashmap count, 
-        //check if the count is more than the check value, and that
-        //it is no tin the ans array, if all passes, push to ans array
-        for &num in &nums {
-           let count = f_map.entry(num).or_insert(0);
-            *count += 1;
-            if *count > check && !ans.contains(&num) {
-                ans.push(num);
-            }
+        //iterate through hashmap, check each key, 
+        //check if val > n/3, if yes, push to ans array
+        for (key, val) in f_map.iter() {
+            if val > &check {
+                ans.push(*key)
+            } 
         }
+
         //return ans array
         ans
     }
