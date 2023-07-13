@@ -11,34 +11,36 @@
  */
 
 function swapPairs(head: ListNode | null): ListNode | null {
-
     let dummy = head;
-
     if(!dummy || !dummy.next) return dummy;
-
-    let a_b = head?.next;
-
-    helper(dummy, dummy?.next, null);
-
+    let a_b = head.next;
+    
+    helper(dummy, dummy.next, null);
+    
     if (a_b != null) {
-        a_b.next = head;
-        
+        a_b.next = head;    
     }
-
-    return a_b ? a_b : null;
+    
+    return a_b;
 };
 
-
+//recursive helper
 function helper(
     a: ListNode | null,
     b: ListNode | null,
     oldprev: ListNode | null,
 ) {
+    //base case breaker
     if (a == null || b == null) return;
+    // hold a reference of b to avoid losing it
     if (oldprev != null) oldprev.next = b;
+    //store b.next which is the next node to be swapped
     let c = b.next;
+    //perform swaps
     b.next = a, a.next = c;
+    //breaker
     if (c == null) return;
+    //recurse again
     helper(c, c.next, a);
 }
 
@@ -70,6 +72,6 @@ that is where old_prev comes in, attach this 4 -> 3 -> null as oldprev.next
 notice that 2 is missing, yes, we accounted for that after swapping all the nodes, I stored 2 initially before the recursion as "a_b" and then attached the swapped list as 
 a_b.next i.e 2 -> 1 -> 4 -> 3 -> null
 
-Finally
-
 */
+
+
