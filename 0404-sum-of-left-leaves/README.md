@@ -5,16 +5,16 @@
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2021/04/08/leftsum-tree.jpg" style="width: 277px; height: 302px;">
-<pre><strong>Input:</strong> root = [3,9,20,null,null,15,7]
+<pre style="position: relative;"><strong>Input:</strong> root = [3,9,20,null,null,15,7]
 <strong>Output:</strong> 24
 <strong>Explanation:</strong> There are two left leaves in the binary tree, with values 9 and 15 respectively.
-</pre>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> root = [1]
+<pre style="position: relative;"><strong>Input:</strong> root = [1]
 <strong>Output:</strong> 0
-</pre>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
