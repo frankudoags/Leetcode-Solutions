@@ -22,16 +22,16 @@ type OptTreeNode = Option<Rc<RefCell<TreeNode>>>;
 impl Solution {
     pub fn preorder_traversal(root: OptTreeNode) -> Vec<i32> {
         let mut s = vec![];
-        Self::preorder(&root, &mut s);
+        fn preorder(node: &OptTreeNode, s: &mut Vec<i32>) {
+            if let Some(n) = node {
+                let b = n.borrow();
+                s.push(b.val);
+                preorder(&b.left, s);
+                preorder(&b.right, s);
+        }
+    }
+        preorder(&root, &mut s);
         s
     }
     
-    fn preorder(node: &OptTreeNode, s: &mut Vec<i32>) {
-        if let Some(n) = node {
-            let b = n.borrow();
-            s.push(b.val);
-            Self::preorder(&b.left, s);
-            Self::preorder(&b.right, s);
-        }
-    }
 }
