@@ -1,0 +1,5 @@
+# Write your MySQL query statement below
+SELECT TWEET_ID
+FROM TWEETS
+GROUP BY CONTENT
+HAVING LENGTH(CONTENT) > 15;
