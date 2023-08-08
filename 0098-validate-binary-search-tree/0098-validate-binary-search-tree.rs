@@ -1,19 +1,39 @@
-/**
- * Definition for a binary tree node.
- * class TreeNode {
- *     val: number
- *     left: TreeNode | null
- *     right: TreeNode | null
- *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.left = (left===undefined ? null : left)
- *         this.right = (right===undefined ? null : right)
- *     }
- * }
- */
-function isValidBST(root: TreeNode | null, min = -Infinity, max = Infinity): boolean {
-    if (!root) return true;
-    if(root?.val <= min || root?.val >= max) return false;
-     return isValidBST(root.left, min, root.val)
-        && isValidBST(root.right, root.val, max)
-};
+// Definition for a binary tree node.
+// #[derive(Debug, PartialEq, Eq)]
+// pub struct TreeNode {
+//   pub val: i32,
+//   pub left: Option<Rc<RefCell<TreeNode>>>,
+//   pub right: Option<Rc<RefCell<TreeNode>>>,
+// }
+// 
+// impl TreeNode {
+//   #[inline]
+//   pub fn new(val: i32) -> Self {
+//     TreeNode {
+//       val,
+//       left: None,
+//       right: None
+//     }
+//   }
+// }
+use std::rc::Rc;
+use std::cell::RefCell;
+type OptNode = Option<Rc<RefCell<TreeNode>>>;
+impl Solution {
+    pub fn is_valid_bst(root: OptNode) -> bool {
+        Self::is_valid(&root, i32::MIN as i64 - 1, i32::MAX as i64 + 1)
+    }
+    
+    fn is_valid(node: &OptNode, min: i64, max: i64) -> bool {
+        match node.as_ref() {
+            None => true,
+            Some(n) => {
+                let b = n.borrow();
+                let val = b.val as i64;
+                (val > min && val < max) &&
+                Self::is_valid(&b.left, min, val) &&
+                Self::is_valid(&b.right, val, max)
+            }
+        }
+    }
+}
