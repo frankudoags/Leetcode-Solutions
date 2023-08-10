@@ -22,12 +22,12 @@
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
-<pre style="position: relative;"><strong>Input:</strong> turnedOn = 1
+<pre><strong>Input:</strong> turnedOn = 1
 <strong>Output:</strong> ["0:01","0:02","0:04","0:08","0:16","0:32","1:00","2:00","4:00","8:00"]
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre><p><strong class="example">Example 2:</strong></p>
-<pre style="position: relative;"><strong>Input:</strong> turnedOn = 9
+</pre><p><strong class="example">Example 2:</strong></p>
+<pre><strong>Input:</strong> turnedOn = 9
 <strong>Output:</strong> []
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</pre>
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
