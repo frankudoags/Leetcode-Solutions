@@ -41,5 +41,3 @@ impl Solution {
     }
 }
 
-//2,2,4,6,-1,4,4,5 -> manager array
-//0,1,2,3, 4,5,6,7 -> employees
