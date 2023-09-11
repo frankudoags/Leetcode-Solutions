@@ -7,7 +7,7 @@ impl Solution {
         
         for (i, &num) in nums.iter().enumerate() {
             match hash_map.get(&num) {
-                Some(&j) => return vec![i as i32, j as i32],
+                Some(j) => return vec![i as i32, *j as i32],
                 None => {
                     hash_map.insert(target - num, i);
                 }
