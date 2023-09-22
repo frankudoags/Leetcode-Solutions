@@ -5,7 +5,7 @@ class Solution:
         if len(s) > len(t):
             return False
         
-        ans, j = 0, 0
+        ans = 0
 
         for i in range(len(t)):
             if s[ans] == t[i]:
