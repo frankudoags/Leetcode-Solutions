@@ -2,15 +2,22 @@
  * @param {string} s
  * @return {boolean}
  */
-var isValid = function(s) {
-    if(s.length % 2 !== 0 ) return false;
-     s = s.trim().split('');
-    const couple: Record<string, string> = { "(": ")", "{": "}", "[": "]" }
-    const stack: string[] = [];
+var isValid = function (s) {
+    s = s.trim().split('');
+    if(s.length % 2 !== 0) return false
+    const stack: Array<string> = [];
+    const couple: Record<string, string> = { ")": "(", "]": "[", "}": "{" };
 
-    for (let i = 0; i < s.length; i++) {
-        if (couple[s[i]]) stack.push(s[i]);
-         else if (couple[stack.pop()] !== s[i]) return false;
-      }
-      return !stack.length;
+    for (let char of s) {
+        if (!couple[char]) {
+            stack.push(char);
+            continue;
+        }
+        if(couple[char] && stack.length == 0) return false
+        if (stack.length && couple[char] != stack.pop()) {
+            return false
+        }
+    }
+
+    return stack.length == 0
 };
