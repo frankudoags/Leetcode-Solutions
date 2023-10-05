@@ -1,15 +1,13 @@
 function majorityElement(nums: number[]): number[] {
-  const map= new Map<number, number> ();
-    for(let i = 0; i < nums.length; i++) {
-        if(!map.has(nums[i])) map.set(nums[i], 1);
-        else map.set(nums[i], (map.get(nums[i]) + 1));
+    const map: Map<number, number> = new Map();
+    for(let num of nums){
+        if(!map.has(num)) map.set(num, 0)
+        map.set(num, map.get(num) + 1);
     }
-    let answer: number[] = [];  
-    let checker = nums.length / 3;
-    for(const [key, value] of map) {
-        if(value > checker) {
-         answer.push(key);  
-        }
+    let check = nums.length / 3;
+    let ans: number[] = []
+    for(let [key, val] of map){
+        if(val > check) ans.push(key)
     }
-    return answer;
+    return ans
 };
