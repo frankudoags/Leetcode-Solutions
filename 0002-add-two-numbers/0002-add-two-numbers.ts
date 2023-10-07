@@ -27,12 +27,10 @@ function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | nul
     
     let sum2 = sum.toString().split('').reverse();
 
-    let dummy = new ListNode(+sum2[sum2.length - 1]);
-    sum2.pop();
+    let dummy = new ListNode(+sum2.pop());
     
     while(sum2.length > 0) {
-        let node = new ListNode(+sum2[sum2.length - 1]);
-        sum2.pop();
+        let node = new ListNode(+sum2.pop());
         node.next = dummy;
         dummy = node;
     }
