@@ -1,5 +1,4 @@
 function invalidTransactions(transactions: string[]): string[] {
-
     let arr = []
     for (let i = 0; i < transactions.length; i++) {
         let trans = transactions[i].split(',')
@@ -8,24 +7,18 @@ function invalidTransactions(transactions: string[]): string[] {
 
     let invalidIndex = new Array(transactions.length).fill(false);
     for (let i = 0; i < arr.length; i++) {
-        if (arr[i].amount > 1000) invalidIndex[i] = true
-        let trans_i = arr[i]
+        if (!arr[i].isAmountValid()) { invalidIndex[i] = true; continue }
         for (let j = 0; j < arr.length; j++) {
-            if (i == j) continue
-            let trans_j = arr[j];
-            if (Math.abs(trans_i.time - trans_j.time) <= 60) {
-                if (trans_i.name == trans_j.name && trans_i.city != trans_j.city) {
-                    invalidIndex[i] = true;
-                    invalidIndex[j] = true;
-                }
+            if(i == j) continue
+            if (arr[i].isInValidDueToTimeAndNaming(arr[j])) {
+                invalidIndex[i] = true;
+                invalidIndex[j] = true;
             }
         }
     }
     let ans = []
     for (let i = 0; i < arr.length; i++) {
-        if (invalidIndex[i]) {
-            ans.push(arr[i].spread())
-        }
+        if (invalidIndex[i]) ans.push(arr[i].spread())
     }
 
     return ans
@@ -47,5 +40,15 @@ class Transaction {
 
     spread() {
         return `${this.name},${this.time},${this.amount},${this.city}`
+    }
+
+    isAmountValid() {
+        return this.amount <= 1000
+    }
+
+    isInValidDueToTimeAndNaming(other: Transaction) {
+        if (Math.abs(this.time - other.time) <= 60) {
+            if (this.name == other.name && this.city != other.city) return true
+        }
     }
 }
