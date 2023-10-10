@@ -12,18 +12,7 @@
 
 function cloneGraph(node: Node | null): Node | null {
     const visited: Map<Node, Node> = new Map();
-
-    if (!node) return node
-    const cloned_node: Node = new Node(node.val);
-    visited.set(node, cloned_node);
-
-    for (const neighbor of node.neighbors) {
-        cloned_node.neighbors.push(
-            dfs(neighbor, visited)
-        )
-    }
-
-    return cloned_node;
+    return dfs(node, visited)
 };
 
 
