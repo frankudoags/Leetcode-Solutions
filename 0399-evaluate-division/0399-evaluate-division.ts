@@ -1,7 +1,6 @@
 function calcEquation(equations: string[][], values: number[], queries: string[][]): number[] {
     let graph = buildGraph(equations, values);
     let res: number[] = []
-    let visited = new Set<string>();
 
     for (let i = 0; i < queries.length; i++) {
         let [src, des] = [queries[i][0], queries[i][1]];
@@ -9,8 +8,7 @@ function calcEquation(equations: string[][], values: number[], queries: string[]
             res.push(-1.0);
         }
         else {
-            res.push(dfs(src, des, visited, graph))
-            visited = new Set()
+            res.push(dfs(src, des, new Set(), graph))
         }
     }
 
